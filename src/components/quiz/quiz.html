@@ -1,0 +1,47 @@
+<ion-header>
+
+    <ion-navbar>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content style="margin: 0 !important;">
+  <ion-slides #slides style="margin: 0 !important;">
+
+
+    <ion-slide *ngFor="let question of questions; let i = index;" style="margin: 0 !important;">
+
+
+
+
+      <h3>Question {{i + 1}}</h3>
+
+
+
+      <h3 (tap)="tapEvent($event)" margin-bottom="" style="height: 140px">
+      {{question.flashCardFront}}
+
+
+</h3>
+
+
+
+      <ion-list no-lines radio-group>
+        <ion-item *ngFor="let answer of question.answers; let i = index;">
+
+          <ion-label>{{i + 1}}. {{answer.answer}}</ion-label>
+          <ion-radio (click)="selectAnswer(answer, question)" [checked]="answer.selected" [disabled]="hasAnswered"></ion-radio>
+
+        </ion-item>
+      </ion-list>
+
+    </ion-slide>
+
+    <ion-slide>
+      <h2>Final Score: {{score}}</h2>
+
+      <button (click)="restartQuiz()" ion-button full color="primary">Start Again</button>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

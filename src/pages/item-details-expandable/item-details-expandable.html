@@ -1,0 +1,12 @@
+<!--Expandable components-->
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title text-left>{{params.title}}</ion-title>
+    </ion-navbar>
+</ion-header>
+<!--Content-->
+<expandable-layout-1  [data]="params | json" >
+</expandable-layout-1>

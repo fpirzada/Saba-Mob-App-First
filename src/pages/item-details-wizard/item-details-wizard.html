@@ -1,0 +1,15 @@
+<!--Wizard component-->
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+        <ion-title text-left>{{params.title}}</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content no-margin no-padding *ngIf="params.data != null">
+    <wizard-layout-1 *ngIf="params.wizardLayout1" [data]="params.data" [events]="params.events">
+    </wizard-layout-1>
+
+</ion-content>

@@ -1,0 +1,89 @@
+<!-- Themes Register + logo -->
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+        <ion-title *ngIf="data != null" text-left>{{data.toolbarTitle}}</ion-title>
+    </ion-navbar>
+</ion-header>
+<!--Content -->
+<ion-content>
+    <ion-grid *ngIf="data != null">
+        <ion-row padding-horizontal align-items-start>
+
+            <ion-col no-padding col-12 col-sm-12 col-md-12 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6>
+                <!---Logo-->
+                <ion-thumbnail>
+                    <img [src]="data.logo">
+                </ion-thumbnail>
+                <!--Form Title-->
+                <h1 ion-text color="accent" title>{{data.title}}</h1>
+                <!---Input field username-->
+              <ion-item no-padding>
+                <ion-label color="dark" stacked>{{data.lableName}}</ion-label>
+                <ion-input required placeholder="{{data.name}}" type="text" required [(ngModel)]="userData.name"></ion-input>
+              </ion-item>
+                <ion-item no-padding>
+                    <ion-label color="dark" stacked>{{data.lableUsername}}</ion-label>
+                    <ion-input required placeholder="{{data.username}}" type="text" required [(ngModel)]="userData.username"></ion-input>
+                </ion-item>
+                <!---Input field password-->
+                <ion-item no-padding>
+                    <ion-label color="dark" stacked>{{data.lablePassword}}</ion-label>
+                    <ion-input required placeholder="{{data.password}}" type="password" required [(ngModel)]="userData.password"></ion-input>
+                </ion-item>
+                <!---Input field email-->
+                <ion-item no-padding>
+                    <ion-label color="dark" stacked>{{data.lableEmail}}</ion-label>
+                    <ion-input required placeholder="{{data.email}}" type="email" pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" [(ngModel)]="userData.email"></ion-input>
+                </ion-item>
+                <!---Input field country-->
+                <ion-item *ngIf="studentOrNot != null" no-padding>
+
+                    <ion-label color="dark" stacked>{{studentOrNot.layout1.title}}</ion-label>
+                    <ion-select [(ngModel)]="userData.studentOrNot" multiple="false" placeholder="Are you Student" required>
+                        <ion-option *ngFor="let item of studentOrNot.layout1.items; let i= index" [value]="item.title" required>{{item.title}}</ion-option>
+                    </ion-select>
+                </ion-item>
+
+              <ion-item *ngIf="userData.studentOrNot === '1-6'" no-padding>
+
+                <ion-label color="dark" stacked>{{studentOf1to6.layout1.title}}</ion-label>
+                <ion-select [(ngModel)]="userData.studentOfClass" multiple="false" placeholder="Are you Student" required>
+                  <ion-option *ngFor="let item of studentOf1to6.layout1.items; let i= index" [value]="item.title" required>{{item.title}}</ion-option>
+                </ion-select>
+              </ion-item>
+
+              <ion-item *ngIf="userData.studentOrNot === '7-9'" no-padding>
+
+                <ion-label color="dark" stacked>{{studentOf7to9.layout1.title}}</ion-label>
+                <ion-select [(ngModel)]="userData.studentOfClass" multiple="false" placeholder="Are you Student" required>
+                  <ion-option *ngFor="let item of studentOf7to9.layout1.items; let i= index" [value]="item.title" required>{{item.title}}</ion-option>
+                </ion-select>
+              </ion-item>
+
+              <ion-item *ngIf="userData.studentOrNot === '10-12'" no-padding>
+
+                <ion-label color="dark" stacked>{{studentOf10to12.layout1.title}}</ion-label>
+                <ion-select [(ngModel)]="userData.studentOfClass" multiple="false" placeholder="Are you Student" required>
+                  <ion-option *ngFor="let item of studentOf10to12.layout1.items; let i= index" [value]="item.title" required>{{item.title}}</ion-option>
+                </ion-select>
+              </ion-item>
+
+                <!---Input field city-->
+                <ion-item no-padding>
+                    <ion-label stacked>{{data.lableState}}</ion-label>
+                    <ion-input required placeholder="{{data.state}}" type="text" pattern="[a-zA-Z ]*" required [(ngModel)]="userData.state"></ion-input>
+                </ion-item>
+
+              <ion-item no-padding>
+                <ion-label stacked>{{data.lableCity}}</ion-label>
+                <ion-input required placeholder="{{data.city}}" type="text" pattern="[a-zA-Z ]*" required [(ngModel)]="userData.city"></ion-input>
+              </ion-item>
+                <!---Register button-->
+                <button ion-button margin-top float-right clear button-clear text-capitalize (click)="onEvent('onRegister')">{{data.register}}</button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>
