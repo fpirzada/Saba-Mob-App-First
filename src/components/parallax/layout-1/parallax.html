@@ -4,7 +4,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title *ngIf="data != null" text-left>{{data.headerTitle}}</ion-title>
+    <ion-title *ngIf="data != null" text-left>{{data?.headerTitle}}</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -26,7 +26,7 @@
         <ion-list no-margin>
           <ion-item item-bcg border no-lines *ngFor="let item of data;let i = index">
             <ion-buttons>
-              <button ion-button style="height: 110px"  (click)="onEvent('onItemClick', item)"  clear [disabled]="item.active == 'true' ? false : true">
+              <button ion-button style="height: 110px"  (click)="onEvent('onItemClick', item.bookReading)"  clear [disabled]="item.active == 'true' ? false : true">
 
                 <!--Content Avatar-->
                 <ion-thumbnail item-start>

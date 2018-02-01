@@ -36,6 +36,7 @@ export class ImageGalleryLayout2 {
   }
 
   openSubGallery(data: string){
+    //sending the topic to the parallex file where it took the data from json.
     console.log(data + ' parallex sent data');
     this.navCtrl.push('ItemDetailsPageParallax', {Topics : data});
   }

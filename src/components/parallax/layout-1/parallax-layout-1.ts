@@ -10,6 +10,7 @@ import {QuizServiceProvider} from "../../../providers/quiz-service/quiz-service"
 })
 export class ParallaxLayout1 {
     data: any;
+    chapters: any[]=[];
     @Input() events: any;
     @ViewChild(Content)
     content: Content;
@@ -30,6 +31,12 @@ export class ParallaxLayout1 {
       if(this.Topic == 'topic1'){
        this.quizDatas = this.quizData.load(this.Topic).subscribe(data => {
          this.data = data.subject;
+         this.data = this.data[0].books;
+         console.log(this.data);
+         let randomIndex = Math.floor((Math.random() * this.data.length) );
+        // console.log(this.data[randomIndex]);
+         this.data = this.data[randomIndex];
+        this.data = this.data.chapters
          console.log(this.data);
        });
       }
@@ -46,7 +53,7 @@ export class ParallaxLayout1 {
     onEvent(event: string, item: any, e: any) {
 
         if(event == 'onItemClick'){
-          console.log(item + 'item');
+          console.log(JSON.stringify(item) + 'item');
             this._navCtrl.push('ItemDetailsPageActionSheet', {dataBook :item});
         }
         // if (e) {
