@@ -32,7 +32,7 @@ export class QuizComponent implements OnInit{
     }
 
     ngOnInit() {
-
+console.log(this.data)
       // let keys = Object.keys(this.data);
       //
       // this.data[key].data.picture.thumb.url
@@ -40,18 +40,7 @@ export class QuizComponent implements OnInit{
 
       console.log(this.data + 'quiz data');
         this.slides.lockSwipes(true);
-        this.dataService.load().then((data) => {
-            data.map((question) => {
-                let originalOrder = question.answers;
-                question.answers = this.randomizeAnswers(originalOrder);
-                //console.log(question);
-                return question;
-            });
-
-            this.questions = data;
-//            console.log(this.questions);
-
-        });
+     this.questions = this.data;
 
     }
 

@@ -21,7 +21,7 @@ export class ItemDetailsPageActionSheet {
       this.page = this.navParams.get('dataBook');
      // this.page = Object.keys(this.params);
       //this.page = JSON.parse(this.params);
-      console.log(this.page + ' page test')
+      console.log(JSON.stringify(this.page) + ' page test')
     //let test = this.navParams.get('dataBook');
     // console.log(test.headerImage + 'test')
   }

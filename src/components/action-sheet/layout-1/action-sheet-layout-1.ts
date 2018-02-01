@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild } from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {IonicPage, Content, AlertController, NavController} from 'ionic-angular';
 import {ActionSheetService} from "../../../services/action-sheet-service";
 
@@ -23,6 +23,11 @@ export class ActionSheetLayout1 {
         // this.data = this.datas;
      //this.data = this._data.getDataForLayout1();
 
+    }
+
+    ngOnInit(){
+      console.log(this.data[0]);
+      this.data = this.data[0];
     }
 
     onEvent(event: string, item: any, e: any) {
