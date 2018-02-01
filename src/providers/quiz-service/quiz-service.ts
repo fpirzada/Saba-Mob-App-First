@@ -21,17 +21,16 @@ export class QuizServiceProvider {
 
 
   load(topic){
+    //book 1
+
     if(topic === 'topic1'){
-      return this.http.get('assets/data/Book1.json').map(res => res.json()).subscribe(data => {
-        this.data = data.subject;
-        console.log(data.subject);
-      });
+      return this.http.get('assets/data/Book1.json').map(res => res.json())
     }
+
+    //book 2
+
     if(topic === 'topic2'){
-      return this.http.get('assets/data/Book2.json').map(res => res.json()).subscribe(data => {
-        this.data = data.subject;
-        console.log(data.subject);
-      });
+      return this.http.get('assets/data/Book2.json').map(res => res.json())
     }
 
   }

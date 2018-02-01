@@ -1,5 +1,5 @@
 
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import { NavController } from 'ionic-angular';
 import {DataProvider} from "../../providers/data/data";
 import {TimerComponent} from "../../components/timer/timer";
@@ -11,6 +11,7 @@ import {QuizService} from "../../services/quiz.service";
 })
 export class QuizComponent implements OnInit{
 
+    @Input() data: any;
     @ViewChild('slides') slides : any;
 
     public hasAnswered : boolean = false;
@@ -27,19 +28,28 @@ export class QuizComponent implements OnInit{
 
     constructor(public navCtrl: NavController, public dataService: QuizService) {
 
+
     }
 
     ngOnInit() {
-        console.log('ionViewDidLoad asdfasf')
+
+      // let keys = Object.keys(this.data);
+      //
+      // this.data[key].data.picture.thumb.url
+      //   console.log('ionViewDidLoad asdfasf');
+
+      console.log(this.data + 'quiz data');
         this.slides.lockSwipes(true);
         this.dataService.load().then((data) => {
             data.map((question) => {
                 let originalOrder = question.answers;
                 question.answers = this.randomizeAnswers(originalOrder);
+                //console.log(question);
                 return question;
             });
 
             this.questions = data;
+//            console.log(this.questions);
 
         });
 

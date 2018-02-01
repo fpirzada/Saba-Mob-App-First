@@ -17,26 +17,37 @@ export class ParallaxLayout1 {
     active: boolean;
     headerImage:any = "";
     Topic: string;
-    @Input() topic:any;
     quizDatas: any;
 
-    constructor(private _parallex: ParallaxService, private _navCtrl: NavController, private _paramCtrl:NavParams, private quizData:QuizServiceProvider) {
+
+
+    constructor(private _parallex: ParallaxService,
+                private _navCtrl: NavController,
+                private _paramCtrl:NavParams,
+                private quizData:QuizServiceProvider) {
+
       this.Topic = this._paramCtrl.get('Topics');
       if(this.Topic == 'topic1'){
-       this.quizDatas = this.quizData.load(this.Topic);
-        console.log(this.quizDatas)
+       this.quizDatas = this.quizData.load(this.Topic).subscribe(data => {
+         this.data = data.subject;
+         console.log(this.data);
+       });
       }
+
+
       if(this.Topic == 'topic2'){
-        this.quizDatas =  this.quizData.load(this.Topic);
-        console.log(this.quizDatas)
+      this.quizData.load(this.Topic).subscribe(data => {
+        this.data = data.subject;
+        console.log(this.data);
+      });
       }
     }
 
     onEvent(event: string, item: any, e: any) {
 
         if(event == 'onItemClick'){
-            this._navCtrl.push('ItemDetailsPageActionSheet');
-            console.log(item)
+          console.log(item + 'item');
+            this._navCtrl.push('ItemDetailsPageActionSheet', {dataBook :item});
         }
         // if (e) {
         //

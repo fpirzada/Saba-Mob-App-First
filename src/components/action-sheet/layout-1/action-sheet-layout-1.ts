@@ -8,12 +8,12 @@ import {ActionSheetService} from "../../../services/action-sheet-service";
     templateUrl: 'action-sheet.html'
 })
 export class ActionSheetLayout1 {
-    // @Input() datas: any;
+    @Input() data: any;
     @Input() events: any;
     @ViewChild(Content)
     content: Content;
 
-    data: any;
+   //datas: any;
 
     active: boolean;
     headerImage:any = "";
@@ -21,8 +21,8 @@ export class ActionSheetLayout1 {
     constructor(public alertCtrl: AlertController, private _data: ActionSheetService, private navCtrl: NavController) {
 
         // this.data = this.datas;
-      this.data = this._data.getDataForLayout1();
-        console.log(this.data);
+     //this.data = this._data.getDataForLayout1();
+
     }
 
     onEvent(event: string, item: any, e: any) {
@@ -61,7 +61,7 @@ export class ActionSheetLayout1 {
         }
     }
 
-    presentActionSheet() {
+    presentActionSheet(data :any) {
         let confirm = this.alertCtrl.create({
             title: 'Use this lightsaber?',
             message: 'Do you agree to use this lightsaber to do good across the intergalactic galaxy?',
@@ -75,7 +75,7 @@ export class ActionSheetLayout1 {
                 {
                     text: 'Agree',
                     handler: () => {
-                        this.navCtrl.setRoot('QuizPage')
+                        this.navCtrl.setRoot('QuizPage',{quizData : data})
                     }
                 }
             ]

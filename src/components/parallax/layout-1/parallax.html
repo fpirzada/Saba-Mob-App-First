@@ -22,19 +22,27 @@
   <!--Content-->
   <ion-grid padding>
     <ion-row *ngIf="data != null">
-      <ion-col col-12>
+      <ion-col col-12 >
         <ion-list no-margin>
-          <ion-item item-bcg border no-lines *ngFor="let item of data.items;let i = index" (click)="onEvent('onItemClick', item)">
-            <!--Content Avatar-->
-            <ion-thumbnail item-start>
-              <img [src]="item.image" alt="{{item.imageAlt}}">
-            </ion-thumbnail>
-            <!--Content Title-->
-            <h2 no-margin item-title>{{item.title}}</h2>
-            <!--Content Subtitle-->
-            <h3 item-subtitle text-wrap>{{item.subtitle}}</h3>
-            <!--Content Badge-->
-            <ion-badge class="badge-light" item-end>{{item.button}}</ion-badge>
+          <ion-item item-bcg border no-lines *ngFor="let item of data;let i = index">
+            <ion-buttons>
+              <button ion-button style="height: 110px"  (click)="onEvent('onItemClick', item)"  clear [disabled]="item.active == 'true' ? false : true">
+
+                <!--Content Avatar-->
+                <ion-thumbnail item-start>
+                  <img [src]="item.image" alt="{{item.imageAlt}}">
+                </ion-thumbnail>
+                <!--Content Title-->
+                <h2 no-margin item-title disabled="true">{{item.title}}</h2>
+                <!--Content Subtitle-->
+                <!--<h3 item-subtitle text-wrap disabled="true">{{item.subtitle}}</h3>-->
+                <!--Content Badge-->
+                <!--<ion-badge class="badge-light" item-end disabled="true">{{item.button}}</ion-badge>-->
+                <!--<button ion-button [disabled]="item.active" color="secondary">function</button>-->
+
+              </button>
+            </ion-buttons>
+
           </ion-item>
         </ion-list>
       </ion-col>

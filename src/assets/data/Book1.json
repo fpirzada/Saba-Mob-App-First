@@ -1,9 +1,54 @@
 {
   "subject": [
     {
-      "book 1": [
+      "title": "Chapter 1",
+      "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "image": "assets/images/avatar/0.jpg",
+      "imageAlt": "avatar",
+      "button": "READ",
+      "active": "true",
+      "headerImage": "assets/images/background-small/4.jpg",
+      "book": [
         {
-          "questions 1": [
+
+
+          "headerTitle": "Basic",
+          "headerImage": "assets/images/background-small/4.jpg",
+          "shareIcon": "more",
+          "TitleAlert": "Are You Sure!",
+          "Alert": "Are you sure you want to continue this quiz because if you enter the timer wont stop at any circumstances.",
+          "actionSheet": {
+            "buttons": [
+              {"text": "Continue", "role": "continue"},
+              { "text": "Cancel" , "role": "cancel" }
+            ]
+          },
+          "id": 1,
+          "title": "test Isaac Raid",
+          "subtitle": "test Subtitle Text",
+          "category": "test NEW GAME",
+          "button": "test $3.99",
+          "description": "test Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "productDescriptions": [
+            {
+              "id": 1,
+              "description": " test Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+            },
+            {
+              "id": 2,
+              "description": " test Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+            },
+            {
+              "id": 3,
+              "description": "passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum"
+            },
+            {
+              "id": 4,
+              "description": "passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum"
+            }
+          ],
+
+          "questions1": [
             {
               "flashCardFront": "<img src='assets/images/helicopter.png'/>",
               "flashCardBack": "Helicopter",
@@ -40,7 +85,7 @@
           ]
         },
         {
-          "questions 2": [
+          "questions2": [
             {
               "flashCardFront": "<img src='assets/images/helicopter.png'/>",
               "flashCardBack": "Helicopter",
@@ -81,9 +126,15 @@
       ]
     },
     {
-      "book 2": [
+      "title": "Chapter 2",
+      "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "image": "assets/images/avatar/1.jpg",
+      "imageAlt": "avatar",
+      "button": "READ",
+      "active": "false",
+      "book": [
         {
-          "questions 1": [
+          "questions1": [
             {
               "flashCardFront": "<img src='assets/images/helicopter.png'/>",
               "flashCardBack": "Helicopter",
@@ -120,7 +171,7 @@
           ]
         },
         {
-          "questions 2": [
+          "questions2": [
             {
               "flashCardFront": "<img src='assets/images/helicopter.png'/>",
               "flashCardBack": "Helicopter",

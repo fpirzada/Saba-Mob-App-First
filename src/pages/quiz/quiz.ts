@@ -15,7 +15,11 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class QuizPage {
 
+  quizData: any;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+  this.quizData = this.navParams.get('quizData');
+    console.log(this.quizData)
   }
 
   ionViewDidLoad() {

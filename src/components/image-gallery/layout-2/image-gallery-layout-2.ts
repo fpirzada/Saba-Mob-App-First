@@ -29,14 +29,14 @@ export class ImageGalleryLayout2 {
       this.animateClass = { 'fade-in-left-item': true };
 
 
-    this.dataService.load();
+    //this.dataService.load();
     //console.log(this.questions);
 
 
   }
 
   openSubGallery(data: string){
-    console.log(data);
+    console.log(data + ' parallex sent data');
     this.navCtrl.push('ItemDetailsPageParallax', {Topics : data});
   }
 
