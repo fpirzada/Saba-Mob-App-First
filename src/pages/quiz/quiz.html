@@ -1,9 +1,47 @@
-<!--
-  Generated template for the QuizPage page.
+<ion-content>
+  <ion-slides #slides>
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 
-  <quiz [data]="quizData"></quiz>
+    <ion-slide  *ngFor="let question of questions; let i = index;" >
+      <ion-card *ngIf="timer">
+        <ion-item class="no-bottom-border item">
+          <button ion-button *ngIf="timeInSeconds && timeInSeconds > 0" large full clear class="timer-button timer-text" color="light">{{timer.displayTime}}</button>
+        </ion-item>
+      </ion-card>
 
+      <h3>Question {{i + 1}}</h3>
+
+
+      <div class="flash-card-front" [innerHTML]="question.flashCardFront"></div>
+
+
+      <h3>{{question.questionText}}</h3>
+
+      <ion-list no-lines radio-group>
+        <ion-item *ngFor="let answer of question.answers; let i = index;">
+
+          <ion-label>{{i + 1}}. {{answer.answer}}</ion-label>
+          <ion-radio (click)="selectAnswer(answer, question)" [checked]="answer.selected" [disabled]="hasAnswered"></ion-radio>
+
+        </ion-item>
+      </ion-list>
+
+    </ion-slide>
+
+    <ion-slide>
+      <!--<h2 style="    background-color: black;" >Final Score: {{score}}</h2>-->
+
+      <h2> Yeyy!</h2>
+      <h2>New Badge Earned!</h2>
+
+      <h3>Level: </h3>
+      <h3>Total Points: </h3>
+      <h3>Mode: </h3>
+      <h3>Performance</h3>
+      <h3>Total Matches: </h3>
+      <h3>Total Badges: {{score}}</h3>
+
+      <button (click)="BackToChallanges()" ion-button full color="primary">Back to Challanges</button>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

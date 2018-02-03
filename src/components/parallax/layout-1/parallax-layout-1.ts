@@ -2,6 +2,7 @@ import { Component, Input, ViewChild } from '@angular/core';
 import {IonicPage, Content, NavController, NavParams} from 'ionic-angular';
 import {ParallaxService} from "../../../services/parallax-service";
 import {QuizServiceProvider} from "../../../providers/quiz-service/quiz-service";
+import { Storage } from '@ionic/storage';
 
 @IonicPage()
 @Component({
@@ -19,26 +20,55 @@ export class ParallaxLayout1 {
     headerImage:any = "";
     Topic: string;
     quizDatas: any;
-
+    checkTopic1: boolean = false;
+     bookNameLocalStore: string;
 
 
     constructor(private _parallex: ParallaxService,
                 private _navCtrl: NavController,
                 private _paramCtrl:NavParams,
-                private quizData:QuizServiceProvider) {
+                private quizData:QuizServiceProvider,
+                private storage: Storage) {
 
       this.Topic = this._paramCtrl.get('Topics');
       if(this.Topic == 'topic1'){
-       this.quizDatas = this.quizData.load(this.Topic).subscribe(data => {
-         this.data = data.subject;
-         this.data = this.data[0].books;
-         console.log(this.data);
-         let randomIndex = Math.floor((Math.random() * this.data.length) );
-        // console.log(this.data[randomIndex]);
-         this.data = this.data[randomIndex];
-        this.data = this.data.chapters
-         console.log(this.data);
-       });
+
+        this.storage.get('bookName1').then(data => {
+          this.bookNameLocalStore = data
+        })
+// check if its enter on this game with which book
+        if(this.bookNameLocalStore !== null){
+          this.storage.get('bookName1')
+            .then(datas => {
+              console.log('stable')
+              this.quizDatas = this.quizData.load(this.Topic).subscribe(data => {
+                this.data = data.subject;
+                this.data = this.data[0].books;
+                console.log(this.data);
+                for (let bookname of this.data) {
+                 if(bookname.bookName == datas) {
+                   this.data = bookname.chapters
+                 }
+                }
+              })
+          })
+        }else {
+// enter to the book for the first time
+          this.quizDatas = this.quizData.load(this.Topic).subscribe(data => {
+            this.data = data.subject;
+            this.data = this.data[0].books;
+            console.log(this.data);
+            let randomIndex = Math.floor((Math.random() * this.data.length));
+            // console.log(this.data[randomIndex]);
+            this.data = this.data[randomIndex];
+            console.log(this.data.bookName);
+            this.storage.set('bookName1', this.data.bookName);
+            this.data = this.data.chapters;
+            console.log(this.data);
+           // this.storage.set('book',this.data)
+
+          });
+        }
       }
 
 

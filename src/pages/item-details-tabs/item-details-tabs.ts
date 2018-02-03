@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { IService } from '../../services/IService';
 import {TabsService} from "../../services/tabs-service";
+import {ItemDetailsPageImageGallery} from "../item-details-image-gallery/item-details-image-gallery";
 
 
 @IonicPage()

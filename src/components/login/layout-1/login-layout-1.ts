@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import {IonicPage, NavController} from 'ionic-angular';
+import {App, IonicPage, NavController} from 'ionic-angular';
 import {LoginService} from "../../../services/login-service";
 import {LoginAuthProvider} from "../../../providers/login-auth/login-auth";
 
@@ -37,7 +37,7 @@ export class LoginLayout1 {
     public username: string;
     public password: string;
 
-    constructor(private loginService: LoginService, private navCtrl: NavController, private authService:LoginAuthProvider ) {
+    constructor(private loginService: LoginService, private navCtrl: NavController, private authService:LoginAuthProvider,private app:App) {
         this.data = this.loginService.getDataForLayout1();
     }
 
@@ -58,7 +58,7 @@ export class LoginLayout1 {
         if(this.responseData.userData){
           console.log(this.responseData);
           localStorage.setItem('userData', JSON.stringify(this.responseData));
-          this.navCtrl.setRoot('ItemDetailsPageTabs');
+          this.app.getRootNav().push('ItemDetailsPageTabs');
         }
         else{ console.log("User already exists"); }
       }, (err) => {

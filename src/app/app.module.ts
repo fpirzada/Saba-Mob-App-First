@@ -10,10 +10,12 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AppSettings } from '../services/app-settings'
 import { LoginAuthProvider } from '../providers/login-auth/login-auth';
 import { QuizServiceProvider } from '../providers/quiz-service/quiz-service';
+import { IonicStorageModule } from '@ionic/storage';
+
 
 @NgModule({
   declarations: [
-    MyApp,
+    MyApp
 
   ],
   imports: [
@@ -21,7 +23,9 @@ import { QuizServiceProvider } from '../providers/quiz-service/quiz-service';
     HttpModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(AppSettings.FIREBASE_CONFIG),
-    AngularFireDatabaseModule, AngularFireAuthModule
+    AngularFireDatabaseModule, AngularFireAuthModule,
+    IonicStorageModule.forRoot()
+
   ],
   bootstrap: [IonicApp],
   entryComponents: [MyApp],

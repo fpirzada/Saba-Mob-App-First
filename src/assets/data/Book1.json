@@ -49,10 +49,11 @@
                   ],
                   "questions":[
                     {
+                      "id":"1",
                       "flashCardFront": "<img src='assets/images/helicopter.png'/>",
                       "flashCardBack": "Helicopter",
                       "flashCardFlipped": false,
-                      "questionText": "What is this?",
+                      "questionText": "What is thiss?",
                       "answers": [
                         {"answer": "Helicopter", "correct": true, "selected": false},
                         {"answer": "Plane", "correct": false, "selected": false},
@@ -60,6 +61,7 @@
                       ]
                     },
                     {
+                      "id":"2",
                       "flashCardFront": "<img src='assets/images/plane.png' />",
                       "flashCardBack": "Plane",
                       "flashCardFlipped": false,
@@ -71,6 +73,7 @@
                       ]
                     },
                     {
+                      "id":"3",
                       "flashCardFront": "<img src='assets/images/truck.png' />",
                       "flashCardBack": "Truck",
                       "flashCardFlipped": false,
@@ -88,7 +91,7 @@
               "title": "Chapter 2",
               "image": "assets/images/avatar/1.jpg",
               "imageAlt": "avatar",
-              "active": "true",
+              "active": "false",
               "chapterName": "Chapter num 2",
               "bookReading":[
                 {

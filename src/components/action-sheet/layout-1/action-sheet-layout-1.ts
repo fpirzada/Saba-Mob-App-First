@@ -1,5 +1,5 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
-import {IonicPage, Content, AlertController, NavController} from 'ionic-angular';
+import {IonicPage, Content, AlertController, NavController, App} from 'ionic-angular';
 import {ActionSheetService} from "../../../services/action-sheet-service";
 
 @IonicPage()
@@ -18,7 +18,7 @@ export class ActionSheetLayout1 {
     active: boolean;
     headerImage:any = "";
 
-    constructor(public alertCtrl: AlertController, private _data: ActionSheetService, private navCtrl: NavController) {
+    constructor(public alertCtrl: AlertController, private _data: ActionSheetService, private navCtrl: NavController,private app:App) {
 
         // this.data = this.datas;
      //this.data = this._data.getDataForLayout1();
@@ -80,7 +80,7 @@ export class ActionSheetLayout1 {
                 {
                     text: 'Agree',
                     handler: () => {
-                        this.navCtrl.setRoot('QuizPage',{quizData : data})
+                        this.app.getRootNav().setRoot('QuizPage',{quizData : data})
                     }
                 }
             ]

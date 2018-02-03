@@ -1,31 +1,22 @@
-<ion-header>
-
-    <ion-navbar>
-    </ion-navbar>
-
-</ion-header>
+<ion-content>
+  <ion-slides #slides>
 
 
-<ion-content style="margin: 0 !important;">
-  <ion-slides #slides style="margin: 0 !important;">
-
-
-    <ion-slide *ngFor="let question of questions; let i = index;" style="margin: 0 !important;">
-
-
+    <ion-slide *ngFor="let question of questions; let i = index;">
+      <ion-card *ngIf="timer">
+        <ion-item class="no-bottom-border item">
+          <button ion-button *ngIf="timeInSeconds && timeInSeconds > 0" large full clear class="timer-button timer-text" color="light">{{timer.displayTime}}</button>
+        </ion-item>
+      </ion-card>
 
 
       <h3>Question {{i + 1}}</h3>
 
 
-
-      <h3 (tap)="tapEvent($event)" margin-bottom="" style="height: 140px">
-      {{question.flashCardFront}}
+      <div class="flash-card-front" [innerHTML]="question.flashCardFront"></div>
 
 
-</h3>
-
-
+      <h3>{{question.questionText}}</h3>
 
       <ion-list no-lines radio-group>
         <ion-item *ngFor="let answer of question.answers; let i = index;">
@@ -39,7 +30,7 @@
     </ion-slide>
 
     <ion-slide>
-      <h2>Final Score: {{score}}</h2>
+      <h2 style="    background-color: black;" >Final Score: {{score}}</h2>
 
       <button (click)="restartQuiz()" ion-button full color="primary">Start Again</button>
     </ion-slide>
