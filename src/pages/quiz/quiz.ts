@@ -54,7 +54,7 @@ export class QuizPage implements OnInit{
     this.quizData = this.navParams.get('quizData');
 
 
-    this.storage.get('start').then(data => {
+    this.storage.get('starter').then(data => {
       this.onStart = data;
   if(this.onStart === true){
     console.log('already started');
@@ -67,9 +67,13 @@ export class QuizPage implements OnInit{
     //   console.log(this.questions + 'questions')
     this.counter = this.questions.length;
     this.initTimer();
+
   }
     });
+
   }
+
+
 
   //timer
 
@@ -82,7 +86,7 @@ export class QuizPage implements OnInit{
   }
 
   initTimer() {
-      this.storage.set('start',true);
+      this.storage.set('starter',true);
 
     this.timer = <ITimer>{
       seconds: this.timeInSeconds,
@@ -173,6 +177,7 @@ export class QuizPage implements OnInit{
   public nextSlide() {
    // console.log(this.index.nativeElement.innerText);
     console.log(this.slides);
+    //this.resumeTimer();
     console.log('nextSlide call');
     this.continueTime();
     this.slides.lockSwipes(false);
@@ -184,13 +189,11 @@ export class QuizPage implements OnInit{
       this.pauseTimer();
     }
 
-
-
-
   }
 
   public selectAnswer(answer, question) {
-    console.log('selectAnswer call')
+    console.log('selectAnswer call');
+    this.pauseTimer();
     this.hasAnswered = true;
     answer.selected = true;
     question.flashCardFlipped = true;
@@ -201,10 +204,24 @@ export class QuizPage implements OnInit{
 
     }
 
-
     setTimeout(() => {
       this.hasAnswered = false;
-      this.nextSlide();
+      // console.log(this.index.nativeElement.innerText);
+      console.log(this.slides);
+      //this.resumeTimer();
+      console.log('nextSlide call');
+      this.continueTime();
+      this.slides.lockSwipes(false);
+      this.slides.slideNext();
+      this.resumeTimer();
+      this.slides.lockSwipes(true);
+      console.log('nextSlide');
+      this.counter--;
+      if(this.counter == 0){
+        this.pauseTimer();
+      }
+
+      // this.resumeTimer();
       answer.selected = false;
       question.flashCardFlipped = false;
     }, 1000);
@@ -234,7 +251,8 @@ export class QuizPage implements OnInit{
   }
 
   BackToChallanges(){
-    this.storage.set('start','false');
+   // this. hasFinished();
+    this.storage.remove('starter');
     this.app.getRootNav().setRoot('ItemDetailsPageTabs')
   }
 

@@ -54,6 +54,7 @@ export class ParallaxLayout1 {
           })
         }else {
 // enter to the book for the first time
+          console.log('else is wotking')
           this.quizDatas = this.quizData.load(this.Topic).subscribe(data => {
             this.data = data.subject;
             this.data = this.data[0].books;

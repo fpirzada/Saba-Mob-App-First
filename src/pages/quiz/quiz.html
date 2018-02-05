@@ -3,11 +3,12 @@
 
 
     <ion-slide  *ngFor="let question of questions; let i = index;" >
-      <ion-card *ngIf="timer">
-        <ion-item class="no-bottom-border item">
-          <button ion-button *ngIf="timeInSeconds && timeInSeconds > 0" large full clear class="timer-button timer-text" color="light">{{timer.displayTime}}</button>
+      <ion-card *ngIf="timer" style="background-color: #292F36">
+        <ion-item class="no-bottom-border item" style="background-color: #292F36">
+          <button ion-button  style="background-color: #292F36" *ngIf="timeInSeconds && timeInSeconds > 0" large full clear class="timer-button timer-text" color="light">{{timer.displayTime}}</button>
         </ion-item>
       </ion-card>
+
 
       <h3>Question {{i + 1}}</h3>
 

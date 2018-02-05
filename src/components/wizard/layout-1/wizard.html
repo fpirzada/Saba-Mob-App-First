@@ -1,7 +1,7 @@
 <!--Theme Wizard Simple + icon-->
 <!--Content -->
 <ion-slides #wizardSlider (ionSlideDidChange)="slideHasChanged()"  pager="true" *ngIf="data != null">
-    <ion-slide *ngFor="let item of data.items;" padding>
+    <ion-slide *ngFor="let item of data.items;" padding style="background-image: {{item.image}} ">
         <img logo [src]="item.logo" />
         <h1 text-left wizard-title padding-horizontal>{{item.title}}</h1>
         <p text-left wizard-description padding-horizontal>{{item.description}}</p>

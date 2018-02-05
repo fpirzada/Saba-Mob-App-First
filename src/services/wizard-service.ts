@@ -38,22 +38,28 @@ export class WizardService implements IService {
             'btnNext': 'Next',
             'btnFinish': 'Finish',
             'items': [
-                {   logo: 'assets/images/logo/2.png',
+
+                {
+                    images: 'assets/images/wizard/1.jpg',
+                    logo: 'assets/images/logo/2.png',
                     title: 'Welcome to our new iOS style theme',
                     description: 'Finished layouts and components for Ionic 3. Ready to use!'
 
                 },
                 {
+                    images: 'assets/images/wizard/1.jpg',
                     logo: 'assets/images/logo/2.png',
                     title: 'For Developers',
                     description: 'Save hours of developing. Tons of funcional components.'
                 },
                 {
+                    images: 'assets/images/wizard/1.jpg',
                     logo: 'assets/images/logo/2.png',
                     title: 'For Designers',
                     description: 'Endless possibilities. Combine layouts as you wish.'
                 },
                 {
+                    images: 'assets/images/wizard/1.jpg',
                     logo: 'assets/images/logo/2.png',
                     title: ' Designers',
                     description: "Endless possibilities. Combine layouts as you wish."
